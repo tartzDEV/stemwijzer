@@ -41,7 +41,7 @@ class StemwijzerController extends Controller
         }
     }
 
-    public function match(Request $request)
+    public function match()
     {
         $userStandpunten = session()->get('userStandpunten', []);
 
