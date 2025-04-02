@@ -19,5 +19,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        $this->call([
+            Thema::class,
+            Vraag::class,
+            Partij::class,
+            Standpunt::class,
+        ]);
     }
 }
