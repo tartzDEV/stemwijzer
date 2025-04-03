@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vraag;
 use App\Models\Partij;
 use App\Models\Standpunt;
-use App\Models\Vraag;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class StemwijzerController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $vraagId = $request->input('vraag_id', 1);
         $vraag = Vraag::with('thema')->find($vraagId);
@@ -18,7 +20,7 @@ class StemwijzerController extends Controller
         return view('stemwijzer.index', compact('vraag', 'partijen', 'vraagId'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): DirectResponse
     {
         $userStandpunten = [];
 
@@ -41,7 +43,7 @@ class StemwijzerController extends Controller
         }
     }
 
-    public function match()
+    public function match(): View
     {
         $userStandpunten = session()->get('userStandpunten', []);
 
