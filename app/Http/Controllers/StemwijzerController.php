@@ -20,7 +20,7 @@ class StemwijzerController extends Controller
         return view('stemwijzer.index', compact('vraag', 'partijen', 'vraagId'));
     }
 
-    public function store(Request $request): DirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $userStandpunten = [];
 
